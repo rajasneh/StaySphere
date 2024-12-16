@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const wrapAsync=require("../utils/wrapAsync.js");
 const ExpressError=require("../utils/ExpressError.js");
-const {listingSchema,reviewSchema}=require("../schema.js");
+const {listingSchema}=require("../schema.js");
 const Listing=require("../models/listing.js");
 
 
@@ -57,7 +57,7 @@ res.render("listings/edit.ejs",{listing})
 router.put("/:id",validateListing,wrapAsync(async (req,res)=>{
 let {id}=req.params;
 await Listing.findByIdAndUpdate(id,{...req.body.listing});
-res.redirect("/listings");
+res.redirect(`/listings/${id}`);
 }));
 
 
