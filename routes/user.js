@@ -28,14 +28,26 @@ router.get("/login", (req, res) => {
     res.render("users/login.ejs")
 });
 
-router.post("/login", 
-    passport.authenticate("local", { 
-        failureRedirect: "/login", 
-        failureFlash: true 
-    }), 
+router.post("/login",
+    passport.authenticate("local", {
+        failureRedirect: "/login",
+        failureFlash: true
+    }),
     async (req, res) => {
-        req.flash("success","Welcome back to StaySphere!");
+        req.flash("success", "Welcome back to StaySphere!");
         res.redirect("/listings");
+    });
+
+
+router.get("/logout", (req, res, next) => {
+    req.logout((err)=>{
+        if(err){
+           return next(err);
+        }
+        req.flash("success","You are logged out!");
+        res.redirect("/listings");
+    })
 });
+
 
 module.exports = router;
