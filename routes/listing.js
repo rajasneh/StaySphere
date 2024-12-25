@@ -5,7 +5,7 @@ const Listing = require("../models/listing.js");
 const { isLoggedIn, isOwner,validateListing } = require("../middleware.js");
 
 
-const listingController=require("../controllers/listing.js");
+const listingController=require("../controllers/listings.js");
 
 //index route
 router.get("/", wrapAsync(listingController.index));
