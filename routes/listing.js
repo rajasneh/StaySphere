@@ -13,15 +13,13 @@ router
     .route("/")
     //index route
     .get(wrapAsync(listingController.index))
-    //create route
-    // .post(
-    //     isLoggedIn,
-    //     validateListing,
-    //     wrapAsync(listingController.createListing)
-    // );
-    .post(upload.single(`listing[image]`),(req,res)=>{
-        res.send(req.file);
-    });
+    // create route
+    .post(
+        isLoggedIn,
+        validateListing,
+        upload.single(`listing[image]`),
+        wrapAsync(listingController.createListing)
+    );
 
 //New route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
