@@ -51,30 +51,17 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
+    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-    // Retrieve the listing from the database
-    let listing = await Listing.findById(id);
-
-    // If a new image is uploaded, update the image field
-    if (req.file) {
+    if (req.file !== "undefined") {
         let url = req.file.path;
         let filename = req.file.filename;
-        listing.image = { url, filename }; // Update image only if new one is uploaded
+        listing.image = { url, filename };
+        await listing.save();
     }
-
-    // Update other fields from the form
-    listing.title = req.body.listing.title;
-    listing.description = req.body.listing.description;
-    listing.location = req.body.listing.location;
-    listing.country = req.body.listing.country;
-    listing.price = req.body.listing.price;
-
-    // Save the updated listing
-    await listing.save(); 
-
     req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
-};
+}
 
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
