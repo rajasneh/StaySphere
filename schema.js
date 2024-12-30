@@ -11,13 +11,12 @@ module.exports.listingSchema = Joi.object({
         image: Joi.alternatives().try(
             Joi.object({
                 filename: Joi.string().default("listingimage"), // Ensure filename is a string
-                url: Joi.string().uri().default("https://plus.unsplash.com/premium_photo-1661947436461-a9ab4ecdd37a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D").allow("", null) // URL can be empty string or null
-            }).allow(null, ""),
+                url: Joi.string().uri()
+            }).allow(null, ""), // Allow the entire image object to be null or empty
             Joi.string() // Allow plain strings
-        ).required() // Ensure image is required
-    })
+        ) // Removed .required() here
+    }).required()
 });
-
 
 module.exports.reviewSchema=Joi.object({
     review:Joi.object({
