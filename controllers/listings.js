@@ -50,31 +50,18 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.updateListing = async (req, res) => {
-    const { id } = req.params;
-    const listing = await Listing.findById(id);
+    let { id } = req.params;
+    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-    if (!listing) {
-        req.flash("error", "Listing not found!");
-        return res.redirect("/listings");
-    }
-
-    // Update other fields
-    Object.assign(listing, req.body.listing);
-
-    // Handle file upload
     if (req.file) {
-        listing.image = {
-            url: req.file.path,
-            filename: req.file.filename,
-        };
+        let url = req.file.path;
+        let filename = req.file.filename;
+        listing.image = { url, filename };
+        await listing.save(); // Save changes if an image was updated
     }
-
-    await listing.save();
-
-    req.flash("success", "Listing updated!");
+    req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
-};
-
+}
 
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;

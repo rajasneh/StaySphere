@@ -12,11 +12,12 @@ module.exports.listingSchema = Joi.object({
             Joi.object({
                 filename: Joi.string().default("listingimage"), // Ensure filename is a string
                 url: Joi.string().uri()
-            }).allow(null, ""), // Allow the entire image object to be null or empty
+            }).allow(null, ""),
             Joi.string() // Allow plain strings
-        ) // Removed .required() here
+        ) // Ensure image is required
     }).required()
 });
+
 
 module.exports.reviewSchema=Joi.object({
     review:Joi.object({
