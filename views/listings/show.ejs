@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate")%> 
 <script>
     const mapKeyEjs="<%= process.env.MAP_KEY %>";
-    const listingsCoordinates = <%-JSON.stringify(listing.geometry.coordinates) %>
+    const listing = <%-JSON.stringify(listing) %>
 </script>
     <div class="row">
         <div class="col-8 offset-3">
