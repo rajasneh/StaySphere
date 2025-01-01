@@ -27,5 +27,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Asneh Raj",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.17.0"
+  }
 }
