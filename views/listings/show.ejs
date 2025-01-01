@@ -1,6 +1,7 @@
-<% layout("/layouts/boilerplate")%>
+<% layout("/layouts/boilerplate")%> 
 <script>
     const mapKeyEjs="<%= process.env.MAP_KEY %>";
+    const listingsCoordinates = <%-JSON.stringify(listing.geometry.coordinates) %>
 </script>
     <div class="row">
         <div class="col-8 offset-3">
@@ -31,7 +32,6 @@
 
             </div>
         </div>
-        <br>
 
         <% if( currUser && currUser._id.equals(listing.owner._id)){ %>
             <div class="btns">
@@ -98,8 +98,9 @@
                                     </div>
                                 <% } %>
                             </div>
-                            <%}%>
                             <hr>
+                            <%}%>
+                            
                 </div>
                 <div class="col-8 offset-3 mb-3">
                     <h3>Where you'll be:</h3>
