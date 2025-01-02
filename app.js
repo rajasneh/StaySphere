@@ -56,10 +56,10 @@ const sessionOptions={
      },
 };
 
-app.get("/",(req,res)=>{
-    console.log("Hi i am root");
-    res.send("Working");
-});
+// app.get("/",(req,res)=>{
+//     console.log("Hi i am root");
+//     res.send("Working");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());
