@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const review = require("./review");
 const Schema = mongoose.Schema;
-const Review = require("./review.js")
+const Review = require("./review.js");
+const { required } = require("joi");
 
 const listingSchema = new Schema({
     title: {
@@ -37,7 +38,7 @@ const listingSchema = new Schema({
     },
     geometry: {
         type: {
-          type: String, // Don't do `{ location: { type: String } }`
+          type: String, // Don't do { location: { type: String } }
           enum: ['Point'], // 'location.type' must be 'Point'
           required: true
         },
@@ -45,8 +46,13 @@ const listingSchema = new Schema({
           type: [Number],
           required: true
         }
+    },
+    category:{     
+            type:String,
+            required:true,
+        }
     }
-});
+);
 
 listingSchema.post("findOneAndDelete", async (listing) => {
     if (listing) {

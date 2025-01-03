@@ -99,3 +99,76 @@ body{
     height: 400px;
     width: 80vh;
 }
+
+/* index.ejs */
+#filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.filter{
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+}
+.filter:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+.filter p{
+    font-size: 0.8rem;
+}
+.tax-info{
+    display: none;
+}
+.tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 1rem;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    #filters {
+        flex-wrap: nowrap;  /* Prevent wrapping and make categories scrollable on mobile */
+        padding: 5px 0;     /* Adjust padding for smaller screens */
+        overflow-x: auto;   /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch;  /* Smooth scrolling on mobile */
+    }
+
+    .filter {
+        min-width: 80px;  /* Ensure each filter has some space on mobile */
+
+    }
+
+    .tax-toggle {
+       display: none; /* Adjust margin for smaller screens */
+    }
+}
+
+
+/* navbar */
+ /* Media query for smaller screens */
+ @media (max-width: 767px) {
+    .navbar-nav .nav-link {
+      padding: 10px 5px; /* Adjust padding for smaller screens */
+    }
+
+    .navbar-collapse {
+      text-align: center; /* Center items in collapsed navbar */
+    }
+
+    .search-inp {
+      width: 80%; /* Make search input take less space */
+    }
+
+    .btn-search {
+      width: 100%; /* Make button full width */
+    }
+  }
+

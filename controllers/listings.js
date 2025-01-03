@@ -9,6 +9,30 @@ module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
     res.render("listings/index.ejs", { allListings });
 }
+module.exports.custom = async (req, res) => {
+    try {
+        const { category } = req.query; // Extract category from query string
+
+        if (!category) {
+            return res.status(400).send("Category is required.");
+        }
+
+        // Find listings based on the category
+        const listingsByCategory = await Listing.find({ category: category });
+
+        if (listingsByCategory.length === 0) {
+            req.flash("error", "No listings found for the selected category.");
+            res.redirect("/listings");
+        }
+
+        console.log(`Found ${listingsByCategory.length} listings in category: ${category}`);
+        // Render the listings page with the filtered listings
+        res.render("listings/index.ejs", { allListings: listingsByCategory }); // This will render index.ejs with filtered listings
+    } catch (err) {
+        console.error("Error handling custom route:", err);
+        res.status(500).send("Internal Server Error");
+    }
+};
 
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs")

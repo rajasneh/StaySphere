@@ -16,4 +16,23 @@
       }, false)
     })
   })()
-  
+
+  // Function to update the read-only input field with the selected category
+  function updateInputField(selectElement) {
+      const selectedCategoryInput = document.getElementById('selectedCategoryInput');
+      selectedCategoryInput.value = selectElement.value; // Update input field value
+  }
+  //index.ejs
+  let taxSwitch=document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click",()=>{
+      console.log("Clicked")
+          let taxInfo=document.getElementsByClassName("tax-info");
+          // console.log(taxInfo);
+          for(info of taxInfo){
+              if(info.style.display!="inline"){
+                  info.style.display="inline";
+              }else{
+                  info.style.display="none";
+              }
+          }
+  });

@@ -45,6 +45,33 @@
                         required>
                     <div class="invalid-feedback">Location should be valid</div>
                 </div>
+                <div class="row">
+                    <div class="mb-3 col-md-7">
+                        <select id="categorySelect" class="form-select" name="listing[category]" onchange="updateInputField(this)" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="LakeFront">LakeFront</option>
+                            <option value="Beach">Beach</option>
+                            <option value="Iconic Cities">Iconic Cities</option>
+                            <option value="Castles">Castles</option>
+                            <option value="Amazing Pools">Amazing Pools</option>
+                            <option value="Mountains">Mountains</option>
+                            <option value="Camping">Camping</option>
+                            <option value="Farms">Farms</option>
+                            <option value="Arctic">Arctic</option>
+                            <option value="Domes">Domes</option>
+                            <option value="Boats">Boats</option>
+                            </select>
+                    </div>
+                    <div class="mb-3 col-md-5   ">
+                        <input 
+                        id="selectedCategoryInput" 
+                            class="form-control " 
+                            type="text" 
+                            placeholder="Selected category will appear here" 
+                            value="<%= listing.category %>" 
+                        readonly>
+                    </div>
+                </div>
                 <button class="btn btn-dark edit-btn mt-3">Edit</button>
                 <br><br>
             </form>

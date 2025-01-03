@@ -39,8 +39,44 @@
                         required />
                     <div class="invalid-feedback">Location should be valid</div>
                 </div>
+                <div class="row">
+                    <label for="category" class="form-label">Category</label>
+                    <div class="col ">
+                         <!-- Dropdown menu -->
+                        <select id="categorySelect" class="form-select" name="listing[category]" onchange="updateInputField(this)" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="LakeFront">LakeFront</option>
+                        <option value="Beach">Beach</option>
+                        <option value="Iconic Cities">Iconic Cities</option>
+                        <option value="Castles">Castles</option>
+                        <option value="Amazing Pools">Amazing Pools</option>
+                        <option value="Mountains">Mountains</option>
+                        <option value="Camping">Camping</option>
+                        <option value="Farms">Farms</option>
+                        <option value="Arctic">Arctic</option>
+                        <option value="Domes">Domes</option>
+                        <option value="Boats">Boats</option>
+                        </select>
+                    </div>                
+                    <div class="input col">
+                          <!-- Read-only input -->
+                        <input 
+                        id="selectedCategoryInput" 
+                            class="form-control " 
+                            type="text" 
+                            placeholder="Selected category will appear here" 
+                        readonly>
+                    </div>             
+                </div>
                 <button class="btn btn-dark add-btn mt-3">Add</button>
                 <br><br>
             </form>
         </div>
     </div>
+    <script>
+        // Function to update the read-only input field with the selected category
+        function updateInputField(selectElement) {
+            const selectedCategoryInput = document.getElementById('selectedCategoryInput');
+            selectedCategoryInput.value = selectElement.value; // Update input field value
+        }
+    </script>
