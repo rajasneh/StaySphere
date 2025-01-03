@@ -1,4 +1,11 @@
-let mapKey = mapKeyEjs; 
+
+
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let mapKey = mapKeyEjs; 
 Coordinates = [listing.geometry.coordinates[1], listing.geometry.coordinates[0]]; // Swap if needed for long,lat
 
 // Initialize the map and set its view dynamically to the Coordinates
@@ -15,3 +22,6 @@ console.log(Coordinates);
 L.marker(Coordinates).addTo(map)
     .bindPopup(`<h4>${listing.location}</h4><p>Exact location provided after booking</p>`)
     .openPopup()
+
+    });
+    
