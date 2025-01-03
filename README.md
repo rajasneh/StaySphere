@@ -50,7 +50,7 @@ ATLASDB_URL=<YOUR_ATLAS-URI>
 
 ### Run the Application
 ```bash
-npm start
+node app.js
 ```
 The app will be available at: `http://localhost:8080`
 
