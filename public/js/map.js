@@ -1,9 +1,4 @@
 
-
-
-
-
-
     document.addEventListener("DOMContentLoaded", function() {
         let mapKey = mapKeyEjs; 
 Coordinates = [listing.geometry.coordinates[1], listing.geometry.coordinates[0]]; // Swap if needed for long,lat
