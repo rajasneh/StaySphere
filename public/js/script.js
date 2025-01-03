@@ -22,17 +22,14 @@
       const selectedCategoryInput = document.getElementById('selectedCategoryInput');
       selectedCategoryInput.value = selectElement.value; // Update input field value
   }
-  //index.ejs
-  let taxSwitch=document.getElementById("flexSwitchCheckDefault");
-  taxSwitch.addEventListener("click",()=>{
-      console.log("Clicked")
-          let taxInfo=document.getElementsByClassName("tax-info");
-          // console.log(taxInfo);
-          for(info of taxInfo){
-              if(info.style.display!="inline"){
-                  info.style.display="inline";
-              }else{
-                  info.style.display="none";
-              }
-          }
-  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    if (taxSwitch) {
+        taxSwitch.addEventListener("click", () => {
+            let taxInfo = document.getElementsByClassName("tax-info");
+            for (let info of taxInfo) {
+                info.style.display = (info.style.display !== "inline") ? "inline" : "none";
+            }
+        });
+    }
+});
