@@ -18,6 +18,9 @@ StaySphere is a full-stack web application for booking and listing properties, i
 - Image upload and management using Cloudinary
 - Responsive design with Bootstrap
 
+## Live Demo
+- Check out the live application at https://staysphere-8epx.onrender.com/listings
+
 ## Installation
 
 ### Prerequisites
