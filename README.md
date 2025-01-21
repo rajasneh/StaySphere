@@ -55,7 +55,7 @@ ATLASDB_URL=<YOUR_ATLAS-URI>
 ```bash
 node app.js
 ```
-The app will be available at: `http://localhost:8080`
+The app will be available at: `http://localhost:8080/listings`
 
 ## Deployment on Render
 1. Push your code to a GitHub repository.
